@@ -1,3 +1,4 @@
+'use strict';
 // The maximum sum subarray problem consists in finding the maximum sum of a contiguous subsequence in an array or list of integers:
 //
 // maxSequence([-2, 1, -3, 4, -1, 2, 1, -5, 4])
@@ -16,26 +17,22 @@
 //5 map sumArray and return highest value
 //6 profit
 
+var sumArr = [];
+var sum = 0;
 
-
-
-
-
-'use strict';
-var counter = 0;
-
-var maxSequence = function(arr) {
-    var array = arr;
-    var sumArray =[];
-    counter = array.length;
-
-    for (var i = 0; i < array.length; i++) {
-        if (arr[i] > arr[i+1]) {
-            continue;
-        }
-        else {
-
-        }
+var maxSequence = function(arr, sumArr, sum) {
+    var numArray = arr;
+    if (!numArray) {
+        return Math.max.apply(Math, sumArr);
     }
 
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i] > arr[i+1]) {
+            arr.shift();
+        }
+        else if (arr[i] < arr[i+1]) {
+            sum += (arr[i] + arr[i+1]);
+        }
+    }
+    maxSequence(arr, )
 };
