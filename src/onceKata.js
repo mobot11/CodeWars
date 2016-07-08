@@ -11,5 +11,9 @@ function once(fn) {
       call=false;
       return fn.apply(this,arguments);
     }
+    return undefined;
   };
 }
+var test = once(console.log);
+test('hello world');
+test('hello girld');
