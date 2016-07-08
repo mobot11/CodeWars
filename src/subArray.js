@@ -24,7 +24,7 @@ var testArray = [-2, 1, -3, 4, -1, 2, 1, -5, 4];
 var maxSequence = function(arr) {
     var numberArray = arr;
     var sumArray = [];
-    var total = (function(){});
+
     function findSequence(arr1, arr2) {
         var sum = 0;
         var max = 0;
@@ -61,7 +61,7 @@ var maxSequence = function(arr) {
       findSequence(arr1, arr2);
 
     }
-    return total;
+
 };
 
 console.log(maxSequence(testArray));
