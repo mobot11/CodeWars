@@ -1,4 +1,5 @@
 'use strict';
+/*jshint esversion: 6 */
 // The maximum sum subarray problem consists in finding the maximum sum of a contiguous subsequence in an array or list of integers:
 //
 // maxSequence([-2, 1, -3, 4, -1, 2, 1, -5, 4])
@@ -16,31 +17,51 @@
 //4 if arr sub3 is less than arr sub4, add number to sum, continue until contiguous order ends, store sum in sum array
 //5 map sumArray and return highest value
 //6 profit
+var testArray = [-2, 1, -3, 4, -1, 2, 1, -5, 4];
 
-var arr1 = [];
-var arr2 = [3,2,1];
 
-function maxSequence(arr, sumArray) {
-  var singleSum =[];
-    var numArray = arr;
-    if ( numArray.length === 0 ) {
-        return Math.max.apply(Math, sumArray);
+
+var maxSequence = function(arr) {
+    var numberArray = arr;
+    var sumArray = [];
+    var total = (function(){});
+    function findSequence(arr1, arr2) {
+        var sum = 0;
+        var max = 0;
+        var copyArray = numberArray;
+        if (arr1.length === 1) {
+            max = Math.max.apply(Math, arr2);
+            console.log(max);
+            return max;
+        }
+
+        if (arr1[0] > arr1[1] || arr[0] === arr[1]) {
+            arr1.shift();
+
+        } else {
+            for (var i = 0; i < copyArray.length; i ++) {
+                if(copyArray[i] > copyArray[i+1]) {
+                    arr1.shift();
+                }
+                else if(copyArray[i] < copyArray[i+1]) {
+                    if (!sum) {
+                        sum = copyArray[i] + copyArray[i+1];
+                        arr1.shift();
+                    } else {
+                        sum += copyArray[i+1];
+                        arr1.shift();
+                    }
+
+                }
+            }
+            arr2.push(sum);
+
+        }
+
+      findSequence(arr1, arr2);
 
     }
-    else if (numArray[0] > numArray[1]) {
-            numArray.shift();
-            console.log(numArray);
-      }
-        else if (numArray[0] < numArray[1]) {
-            singleSum.push(numArray[0] + numArray[1]);
-            numArray.shift();
+    return total;
+};
 
-        console.log(numArray);
-        sumArray.push(singleSum.reduce(function(a, b) {
-          return a + b;
-        }));
-      }
-
-}
-
-console.log(maxSequence(arr2, arr1));
+console.log(maxSequence(testArray));
