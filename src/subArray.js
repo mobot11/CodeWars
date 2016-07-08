@@ -17,30 +17,15 @@
 //5 map sumArray and return highest value
 //6 profit
 
-var arr1 = [];
-var arr2 = [3,2,1];
-
-function maxSequence(arr, sumArray) {
-  var singleSum =[];
-    var numArray = arr;
-    if ( numArray.length === 0 ) {
-        return Math.max.apply(Math, sumArray);
-
-    }
-    else if (numArray[0] > numArray[1]) {
-            numArray.shift();
-            console.log(numArray);
-      }
-        else if (numArray[0] < numArray[1]) {
-            singleSum.push(numArray[0] + numArray[1]);
-            numArray.shift();
-
-        console.log(numArray);
-        sumArray.push(singleSum.reduce(function(a, b) {
-          return a + b;
-        }));
-      }
-
-}
-
-console.log(maxSequence(arr2, arr1));
+// var MaxSequence = function(array) {
+//   this.numberArray = [];
+//   this.arrayLength = array.length;
+//   this.counter = 0;
+//
+//   function helperFunction(numberArray, finalSums, counter) {
+//     console.log(this.numberArray);
+//
+//
+//   }
+//
+// };
