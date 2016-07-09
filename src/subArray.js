@@ -19,63 +19,28 @@
 //6 profit
 var testArray = [-2, 1, -3, 4, -1, 2, 1, -5, 4];
 
-
-// var MaxSequence = function(array) {
-//   this.numberArray = [];
-//   this.arrayLength = array.length;
-//   this.counter = 0;
-//
-//   function helperFunction(numberArray, finalSums, counter) {
-//     console.log(this.numberArray);
-//
-//
-//   }
-//
-// };
-
-
+var negativeArray = [-2, -2, -2, -2, -2, -2];
 
 var maxSequence = function(arr) {
-    var numberArray = arr;
-    var sumArray = [];
 
-    function findSequence(arr1, arr2) {
-        var sum = 0;
-        var max = 0;
-        var copyArray = numberArray;
-        if (arr1.length === 1) {
-            max = Math.max.apply(Math, arr2);
-            console.log(max);
-            return max;
+    var maxCurrent = 0,
+        maxGlobal = 0,
+        counter = 0;
+
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i] < 0) {
+            counter++;
         }
+        maxCurrent = Math.max(arr[i], maxCurrent + arr[i]);
 
-        if (arr1[0] > arr1[1] || arr[0] === arr[1]) {
-            arr1.shift();
-
-        } else {
-            for (var i = 0; i < copyArray.length; i ++) {
-                if(copyArray[i] > copyArray[i+1]) {
-                    arr1.shift();
-                }
-                else if(copyArray[i] < copyArray[i+1]) {
-                    if (!sum) {
-                        sum = copyArray[i] + copyArray[i+1];
-                        arr1.shift();
-                    } else {
-                        sum += copyArray[i+1];
-                        arr1.shift();
-                    }
-
-                }
-            }
-            arr2.push(sum);
-
+        if (maxCurrent > maxGlobal) {
+            maxGlobal = maxCurrent
         }
-
-      findSequence(arr1, arr2);
-
     }
+    if (counter === arr.length) {
+        maxGlobal = 0;
+    }
+    return maxGlobal;
+}
 
-};
-
-console.log(maxSequence(testArray));
+console.log(maxSequence(negativeArray));
