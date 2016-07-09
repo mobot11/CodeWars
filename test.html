@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<script>
+    function meters(x) {
+
+        var obj = {};
+        var abr = ['m', 'km', 'Mm', 'Gm', 'Tm', 'Pm', 'Em', 'Zm', 'Ym'];
+        var multiplyer = 0;
+
+        for (var i = 0; i < abr.length; i++) {
+            obj[Math.pow(10, multiplyer)] = abr[i];
+            multiplyer += 3;
+        }
+        return obj;
+    if()
+
+    }
+
+
+    console.log(meters(500));
+</script>
