@@ -1,19 +1,20 @@
-//switch the first and the last letter of a word in an array and add 'ay' to the ends
+//Move the first letter of each word to the end of it, then add 'ay' to the end of the word.
 
-function pigIt(array) {
 
-    var newArray = array.map(function(word) {
+
+var testString = 'Pig latin is cool';
+
+function pigIt( string ) {
+    var stringArray = string.split(" ");
+    var newArray = stringArray.map(function( word ) {
         var firstLetter = word[0];
-        var lastLetter = word[word.length - 1];
-        var newPig = word.slice(1, word.length - 1);
-        newPig = lastLetter + newPig + firstLetter + 'ay';
+        var newPig = word.slice( 1, word.length );
+        newPig = newPig + firstLetter + 'ay';
+        console.log( newPig );
         return newPig;
     });
-    
-return newArray;
+
+    return newArray.join(" ");
 }
 
-
-var words = ['test', 'yellow', 'building'];
-
-console.log(pigIt(words));
+pigIt(testString);
